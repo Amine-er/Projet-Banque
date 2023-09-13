@@ -1,9 +1,6 @@
 package com.estc.projetbanque.entities;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -11,7 +8,7 @@ import java.util.Date;
 
 @Entity
 @DiscriminatorValue("CC")
-@Getter @Setter @NoArgsConstructor
+@Getter @Setter @NoArgsConstructor @ToString
 public class CompteCourant extends Compte{
     private double decouvert;
 
