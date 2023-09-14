@@ -1,14 +1,87 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorator="template1">
+      layout:decorate="~{template1.html}">
 <head>
     <meta charset="UTF-8">
     <title>Banque APP</title>
 </head>
 <body>
     <div layout:fragment="content">
-        <h3>Test</h3>
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">Consultation d'un compte</div>
+                <div class="panel-body">
+                    <form th:action="@{/consulterCompte}" method="get">
+                        <div>
+                            <label>Code Cpte:</label>
+                            <input type="text" name="codeCompte" th:value="${codeCompte}"/>
+                            <button type="submit" class="btn btn-primary">Ok</button>
+                        </div>
+                    </form>
+                    <div class="text-danger" th:if="${exception}" th:text="${exception.message}"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-primary" th:if="${compte}">
+                <div class="panel-heading">Information sur le compte</div>
+                <div class="panel-body">
+                    <div>
+                        <label>Client:</label>
+                        <label th:text="${compte.client.getNom()}"></label>
+                    </div>
+                    <div>
+                        <label>Code:</label>
+                        <label th:text="${compte.getCodeCompte()}"></label>
+                    </div>
+                    <div>
+                        <label>Solde:</label>
+                        <label th:text="${compte.getSolde()}"></label>
+                    </div>
+                    <div>
+                        <label>Date creation:</label>
+                        <label th:text="${compte.getDateCreation()}"></label>
+                    </div>
+                   <div>
+                        <label>Type:</label>
+                        <label th:text="${typeCompte}"></label>
+                    </div>
+                    <div th:if="${typeCompte=='CompteCourant'}">
+                        <label>Decouvert:</label>
+                        <label th:text="${compte.getDecouvert()}"></label>
+                    </div>
+                    <div th:if="${typeCompte=='CompteEpargne'}">
+                        <label>Taux:</label>
+                        <label th:text="${compte.getTaux()}"></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-primary" th:if="${compte}">
+                <div class="panel-heading">Operation sur le compte</div>
+                <div class="panel-body">
+                    <table class="table table-striped">
+                        <tr>
+                            <th>Num</th><th>Type</th><th>Date</th><th>Montant</th>
+                        </tr>
+                        <tr th:each="o:${listOperations}">
+                            <td th:text="${o.getNumero()}"></td>
+                            <td th:text="${typeCompte}"></td>
+                            <td th:text="${o.getDateOperation()}"></td>
+                            <td th:text="${o.getMontant()}"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-primary" th:if="${compte}">
+                <div class="panel-heading">Liste des operations</div>
+                <div class="panel-body"></div>
+            </div>
+        </div>
     </div>
 </body>
 </html>

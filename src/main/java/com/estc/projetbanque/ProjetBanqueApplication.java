@@ -5,10 +5,12 @@ import com.estc.projetbanque.dao.CompteRepository;
 import com.estc.projetbanque.dao.OperationRepository;
 import com.estc.projetbanque.entities.*;
 import com.estc.projetbanque.service.IBanqueService;
+import nz.net.ultraq.thymeleaf.layoutdialect.LayoutDialect;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
 import java.util.Date;
 
@@ -59,8 +61,11 @@ public class ProjetBanqueApplication implements CommandLineRunner {
 
         banqueService.virement("c1","c2",20000);
 
-        //System.out.println(banqueService.consulterCompte("c1"));
-        //System.out.println(banqueService.consulterCompte("c4"));
+        /*String codeCompte = cp1.getCodeCompte();
+        Compte cp4 = compteRepository.findCompteByCodeCompte(codeCompte);
+
+        System.out.println(banqueService.consulterCompte("c1"));
+        System.out.println(cp4);*/
 
 
     }

@@ -20,7 +20,7 @@ public class BanqueServiceImpl implements IBanqueService{
     private OperationRepository operationRepository;
     @Override
     public Compte consulterCompte(String codeCpte) {
-        Compte cp = compteRepository.findByCodeCompte(codeCpte);
+        Compte cp = compteRepository.findCompteByCodeCompte(codeCpte);
         if(cp == null) throw new RuntimeException("Compte Introuvable!");
         return cp;
     }

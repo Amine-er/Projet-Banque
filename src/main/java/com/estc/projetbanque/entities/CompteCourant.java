@@ -16,5 +16,4 @@ public class CompteCourant extends Compte{
         super(codeCompte, dateCreation, solde, client);
         this.decouvert = decouvert;
     }
-
 }

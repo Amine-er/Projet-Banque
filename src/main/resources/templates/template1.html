@@ -4,26 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <title>Banque APP</title>
-    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/3.3.4/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/static/css/myStyle.css">
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/3.3.4/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.3.4/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" href="/static/css/myStyle.css"
+          th:href="@{/static/css/myStyle.css}">
 </head>
 <body>
-    <header>
-        <div class="navbar navbar-inverse">
-            <div class="container-fluid">
-                <ul class="nav navbar-nav">
-                    <li> <a th:href="@{/operations}">Operations</a></li>
-                    <li> <a th:href="@{/comptes}">Comptes</a></li>
-                    <li> <a th:href="@{/clients}">Clients</a></li>
-                </ul>
-            </div>
+<header>
+    <div class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav">
+                <li><a th:href="@{/operations}">Operations</a></li>
+                <li><a th:href="@{/comptes}">Comptes</a></li>
+                <li><a th:href="@{/clients}">Clients</a></li>
+            </ul>
         </div>
-    </header>
-    <section layout:fragment="content"> </section>
-    <footer>
-        <div class="navbar-fixed-bottom">
-            <small>@L'adresse de Banque</small>
-        </div>
-    </footer>
+    </div>
+</header>
+<section layout:fragment="content">
+
+</section>
+<footer>
+    <div class="navbar-fixed-bottom">
+        <small>@L'adresse de Banque</small>
+    </div>
+</footer>
 </body>
 </html>
