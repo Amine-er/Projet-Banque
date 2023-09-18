@@ -60,7 +60,7 @@
         </div>
         <div class="col-md-6">
             <div class="panel panel-primary" th:if="${compte}">
-                <div class="panel-heading">Operation sur le compte</div>
+                <div class="panel-heading">Liste des operations</div>
                 <div class="panel-body">
                     <table class="table table-striped">
                         <tr>
@@ -68,18 +68,55 @@
                         </tr>
                         <tr th:each="o:${listOperations}">
                             <td th:text="${o.getNumero()}"></td>
-                            <td th:text="${typeCompte}"></td>
+                            <td th:text="${o.getClass().getSimpleName()}"></td>
                             <td th:text="${o.getDateOperation()}"></td>
                             <td th:text="${o.getMontant()}"></td>
                         </tr>
                     </table>
+                    <div class="container">
+                        <ul class="nav nav-pills">
+                            <li th:each="p,status:${pages}">
+                                <a th:href="@{/consulterCompte(codeCompte=${codeCompte},page=${status.index})}"
+                                   th:text="${status.index}"></a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="col-md-6">
             <div class="panel panel-primary" th:if="${compte}">
-                <div class="panel-heading">Liste des operations</div>
-                <div class="panel-body"></div>
+                <div class="panel-heading">Operation sur le compte</div>
+                <div class="panel-body">
+                    <form th:action="@{/saveOperation}" method="post">
+                        <div>
+                            <label>Compte </label>
+                            <input type="hidden" name="codeCompte" th:value="${codeCompte}"/>
+                            <label th:text="${codeCompte}"></label>
+                        </div>
+                        <div>
+                            <input type="radio" name="typeOperation" value="VERS" checked="checked"
+                                   onchange="document.getElementById('forVirement').style.display='none'"/>
+                            <label>Versement</label>
+                            <input type="radio" name="typeOperation" value="RET"
+                                   onchange="document.getElementById('forVirement').style.display='none'"/>
+                            <label>Retrait</label>
+                            <input type="radio" name="typeOperation" value="VIR"
+                                   onchange="document.getElementById('forVirement').style.display='block'"/>
+                            <label>Virement</label>
+                        </div>
+                        <div id="forVirement" style="display: none">
+                            <label>Vers:</label>
+                            <input type="text" name="codeCompte2">
+                        </div>
+                        <div>
+                            <label>Montant:</label>
+                            <input type="text" name="montant">
+                        </div>
+                        <div class="text-danger" th:text="${#httpServletRequest.getParameter('error')}"></div>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

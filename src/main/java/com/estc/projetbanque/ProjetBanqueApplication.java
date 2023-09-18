@@ -52,10 +52,14 @@ public class ProjetBanqueApplication implements CommandLineRunner {
         operationRepository.save(new Retrait(new Date(),9000,cp3));*/
 
         banqueService.verser("c1", 10000);
+        banqueService.verser("c1", 10000);
+        banqueService.verser("c1", 10000);
         banqueService.verser("c2", 10000);
         banqueService.verser("c3", 10000);
 
-        banqueService.retirer("c1", 50000);
+        banqueService.retirer("c1", 5000);
+        banqueService.retirer("c1", 5000);
+        banqueService.retirer("c1", 5000);
         banqueService.retirer("c2", 20000);
         banqueService.retirer("c3", 6000);
 
