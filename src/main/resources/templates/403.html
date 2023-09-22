@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template1.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Banque APP</title>
+</head>
+<body>
+    <div layout:fragment="content">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-primary">
+                <div class="panel-heading">Access Denied</div>
+                <div class="panel-body">
+                    <div class="text-danger">You Don't have the Access rights!</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

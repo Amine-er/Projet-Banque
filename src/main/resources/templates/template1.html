@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Banque APP</title>
-    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/3.3.4/css/bootstrap.min.css"
-          th:href="@{/webjars/bootstrap/3.3.4/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/3.3.7/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}">
     <link rel="stylesheet" type="text/css" href="/static/css/myStyle.css"
           th:href="@{/static/css/myStyle.css}">
 </head>
@@ -17,6 +17,9 @@
                 <li><a th:href="@{/operations}">Operations</a></li>
                 <li><a th:href="@{/comptes}">Comptes</a></li>
                 <li><a th:href="@{/clients}">Clients</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a th:href="@{/login?logout}">Logout</a></li>
             </ul>
         </div>
     </div>
